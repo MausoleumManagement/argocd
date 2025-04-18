@@ -1,0 +1,3 @@
+secrets.yaml
+manifests/*
+charts/

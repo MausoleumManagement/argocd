@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# set this namespace on all resources
+namespace: argocd
+
+helmcharts:
+  # https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+  # https://artifacthub.io/packages/helm/argo/argo-cd
+  - name: argo-cd
+    repo: https://argoproj.github.io/argo-helm
+    version: 7.8.26
+    # it's also possible to set the namespace here
+    # namespace: argocd
+    # we can set the release name, if we care about such things
+    # releaseName: nekropolis-argocd
+    # apparently helm will suppress the generation of CRDs by default 
+    includeCRDs: true
+
+    # The additional files can override the regular values file 
+    valuesFile: values.yaml
+    additionalValuesFiles:
+      - secrets.yaml
