@@ -4,6 +4,10 @@ kind: Kustomization
 # set this namespace on all resources
 namespace: argocd
 
+# include subdirectory for any additional resources we want
+resources:
+  - resources
+
 helmcharts:
   # https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
   # https://artifacthub.io/packages/helm/argo/argo-cd
