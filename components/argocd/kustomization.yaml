@@ -9,7 +9,7 @@ helmcharts:
   # https://artifacthub.io/packages/helm/argo/argo-cd
   - name: argo-cd
     repo: https://argoproj.github.io/argo-helm
-    version: 7.8.26
+    version: 8.1.3
     # it's also possible to set the namespace here
     # namespace: argocd
     # we can set the release name, if we care about such things
