@@ -4,10 +4,6 @@ kind: Kustomization
 # set this namespace on all resources
 namespace: argocd
 
-# include subdirectory for any additional resources we want
-resources:
-  - resources
-
 helmcharts:
   # https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
   # https://artifacthub.io/packages/helm/argo/argo-cd
@@ -17,7 +13,7 @@ helmcharts:
     # it's also possible to set the namespace here
     # namespace: argocd
     # we can set the release name, if we care about such things
-    # releaseName: nekropolis-argocd
+    releaseName: argocd
     # apparently helm will suppress the generation of CRDs by default 
     includeCRDs: true
 
@@ -25,3 +21,5 @@ helmcharts:
     valuesFile: values.yaml
     additionalValuesFiles:
       - secrets.yaml
+resources:
+  - namespace.yaml
