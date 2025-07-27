@@ -10,17 +10,10 @@ helmcharts:
   - name: argo-cd
     repo: https://argoproj.github.io/argo-helm
     version: 8.1.3
-    # it's also possible to set the namespace here
-    # namespace: argocd
-    # we can set the release name, if we care about such things
     releaseName: argocd
     # apparently helm will suppress the generation of CRDs by default 
     includeCRDs: true
-
-    # The additional files can override the regular values file 
     valuesFile: values.yaml
-    additionalValuesFiles:
-      - secrets.yaml
 resources:
   - namespace.yaml
 patches:
