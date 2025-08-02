@@ -27051,6 +27051,24 @@ spec:
           optional: true
         name: argocd-cmd-params-cm
 ---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+  namespace: argocd
+spec:
+  clusterResourceBlacklist:
+  - group: '*'
+    kind: '*'
+  clusterResourceWhitelist: []
+  destinations: []
+  namespaceResourceBlacklist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist: []
+  sourceNamespaces: []
+  sourceRepos: []
+---
 apiVersion: batch/v1
 kind: Job
 metadata:

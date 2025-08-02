@@ -16,6 +16,7 @@ helmcharts:
     valuesFile: values.yaml
 resources:
   - namespace.yaml
+  - approject-default.yaml
 patches:
   - path: patch-delete-argocd-secret.yaml
   - path: patch-delete-argocd-notifications-secret.yaml
