@@ -1,0 +1,119 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nekropolis-cluster
+  #this finaliser causes cascading deletion (delete children)
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: cluster-api
+    server: "https://kubernetes.default.svc"
+  project: unterbau
+  source:
+    path: manifests/nekropolis-cluster
+    repoURL: "https://github.com/MausoleumManagement/cluster-api.git"
+    targetRevision: master
+---
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: provider-bootstrap-kubeadm
+  #this finaliser causes cascading deletion (delete children)
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: capi-kubeadm-bootstrap-system
+    server: "https://kubernetes.default.svc"
+  project: unterbau
+  source:
+    path: manifests/provider-bootstrap-kubeadm
+    repoURL: "https://github.com/MausoleumManagement/cluster-api.git"
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: provider-controlplane-kubeadm
+  #this finaliser causes cascading deletion (delete children)
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: capi-kubeadm-control-plane-system
+    server: "https://kubernetes.default.svc"
+  project: unterbau
+  source:
+    path: manifests/provider-controlplane-kubeadm
+    repoURL: "https://github.com/MausoleumManagement/cluster-api.git"
+    targetRevision: master
+  # the rules field will be modified due to the
+  # aggregation of other roles into this one
+  ignoreDifferences:
+    - group: 'rbac.authorization.k8s.io'
+      kind: ClusterRole
+      name: capi-kubeadm-control-plane-aggregated-manager-role
+      managedFieldsManagers:
+        - clusterrole-aggregation-controller
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: provider-capmox
+  #this finaliser causes cascading deletion (delete children)
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: capmox-system
+    server: "https://kubernetes.default.svc"
+  project: unterbau
+  source:
+    path: manifests/provider-capmox
+    repoURL: "https://github.com/MausoleumManagement/cluster-api.git"
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: provider-capi-core
+  #this finaliser causes cascading deletion (delete children)
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: capi-system
+    server: "https://kubernetes.default.svc"
+  project: unterbau
+  source:
+    path: manifests/provider-core
+    repoURL: "https://github.com/MausoleumManagement/cluster-api.git"
+    targetRevision: master
+  # the rules field will be modified due to the
+  # aggregation of other roles into this one
+  ignoreDifferences:
+    - group: 'rbac.authorization.k8s.io'
+      kind: ClusterRole
+      name: capi-aggregated-manager-role
+      managedFieldsManagers:
+        - clusterrole-aggregation-controller
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: provider-ipam-incluster
+  #this finaliser causes cascading deletion (delete children)
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: capi-ipam-in-cluster-system
+    server: "https://kubernetes.default.svc"
+  project: unterbau
+  source:
+    path: manifests/provider-ipam
+    repoURL: "https://github.com/MausoleumManagement/cluster-api.git"
+    targetRevision: master

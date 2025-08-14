@@ -15,10 +15,34 @@ spec:
     kind: ClusterRole
   - group: rbac.authorization.k8s.io
     kind: ClusterRoleBinding
+  - group: admissionregistration.k8s.io
+    kind: ValidatingWebhookConfiguration
+  - group: admissionregistration.k8s.io
+    kind: MutatingWebhookConfiguration
   description: This project contains the basic components of the cluster and has wider
     permissions
   destinations:
   - namespace: argocd
+    server: https://kubernetes.default.svc
+  - namespace: capi-ipam-in-cluster-system
+    server: https://kubernetes.default.svc
+  - namespace: capi-kubeadm-bootstrap-system
+    server: https://kubernetes.default.svc
+  - namespace: capi-kubeadm-control-plane-system
+    server: https://kubernetes.default.svc
+  - namespace: capi-system
+    server: https://kubernetes.default.svc
+  - namespace: capmox-system
+    server: https://kubernetes.default.svc
+  - namespace: cilium
+    server: https://kubernetes.default.svc
+  - namespace: cilium-secrets
+    server: https://kubernetes.default.svc
+  - namespace: cluster-api
+    server: https://kubernetes.default.svc
+  - namespace: cert-manager
+    server: https://kubernetes.default.svc
+  - namespace: kube-system
     server: https://kubernetes.default.svc
   namespaceResourceWhitelist:
   - group: ""
@@ -30,17 +54,40 @@ spec:
   - group: apps
     kind: Deployment
   - group: apps
+    kind: DaemonSet
+  - group: apps
     kind: StatefulSet
   - group: argoproj.io
     kind: AppProject
   - group: batch
     kind: Job
+  - group: cert-manager.io
+    kind: Certificate
+  - group: cert-manager.io
+    kind: Issuer
   - group: rbac.authorization.k8s.io
     kind: Role
   - group: rbac.authorization.k8s.io
     kind: RoleBinding
+  - group: cluster.x-k8s.io
+    kind: Cluster
+  - group: cluster.x-k8s.io
+    kind: MachineDeployment
+  - group: infrastructure.cluster.x-k8s.io
+    kind: ProxmoxCluster
+  - group: infrastructure.cluster.x-k8s.io
+    kind: ProxmoxMachineTemplate
+  - group: ipam.cluster.x-k8s.io
+    kind: InClusterIPPool
+  - group: controlplane.cluster.x-k8s.io
+    kind: KubeadmControlPlane
+  - group: bootstrap.cluster.x-k8s.io
+    kind: KubeadmConfigTemplate
   sourceRepos:
   - https://github.com/MausoleumManagement/argocd.git
+  - https://github.com/MausoleumManagement/cert-manager.git
+  - https://github.com/MausoleumManagement/cilium.git
+  - https://github.com/MausoleumManagement/cluster-api.git
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -57,4 +104,152 @@ spec:
   source:
     path: manifests/argocd
     repoURL: https://github.com/MausoleumManagement/argocd.git
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: cert-manager
+  namespace: argocd
+spec:
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc
+  project: unterbau
+  source:
+    path: manifests/cert-manager
+    repoURL: https://github.com/MausoleumManagement/cert-manager.git
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: cilium
+  namespace: argocd
+spec:
+  destination:
+    namespace: cilium
+    server: https://kubernetes.default.svc
+  project: unterbau
+  source:
+    path: manifests/cilium
+    repoURL: https://github.com/MausoleumManagement/cilium.git
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: nekropolis-cluster
+  namespace: argocd
+spec:
+  destination:
+    namespace: cluster-api
+    server: https://kubernetes.default.svc
+  project: unterbau
+  source:
+    path: manifests/nekropolis-cluster
+    repoURL: https://github.com/MausoleumManagement/cluster-api.git
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: provider-bootstrap-kubeadm
+  namespace: argocd
+spec:
+  destination:
+    namespace: capi-kubeadm-bootstrap-system
+    server: https://kubernetes.default.svc
+  project: unterbau
+  source:
+    path: manifests/provider-bootstrap-kubeadm
+    repoURL: https://github.com/MausoleumManagement/cluster-api.git
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: provider-capi-core
+  namespace: argocd
+spec:
+  destination:
+    namespace: capi-system
+    server: https://kubernetes.default.svc
+  ignoreDifferences:
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    managedFieldsManagers:
+    - clusterrole-aggregation-controller
+    name: capi-aggregated-manager-role
+  project: unterbau
+  source:
+    path: manifests/provider-core
+    repoURL: https://github.com/MausoleumManagement/cluster-api.git
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: provider-capmox
+  namespace: argocd
+spec:
+  destination:
+    namespace: capmox-system
+    server: https://kubernetes.default.svc
+  project: unterbau
+  source:
+    path: manifests/provider-capmox
+    repoURL: https://github.com/MausoleumManagement/cluster-api.git
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: provider-controlplane-kubeadm
+  namespace: argocd
+spec:
+  destination:
+    namespace: capi-kubeadm-control-plane-system
+    server: https://kubernetes.default.svc
+  ignoreDifferences:
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    managedFieldsManagers:
+    - clusterrole-aggregation-controller
+    name: capi-kubeadm-control-plane-aggregated-manager-role
+  project: unterbau
+  source:
+    path: manifests/provider-controlplane-kubeadm
+    repoURL: https://github.com/MausoleumManagement/cluster-api.git
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: provider-ipam-incluster
+  namespace: argocd
+spec:
+  destination:
+    namespace: capi-ipam-in-cluster-system
+    server: https://kubernetes.default.svc
+  project: unterbau
+  source:
+    path: manifests/provider-ipam
+    repoURL: https://github.com/MausoleumManagement/cluster-api.git
     targetRevision: master

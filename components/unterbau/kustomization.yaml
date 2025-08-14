@@ -4,4 +4,7 @@ kind: Kustomization
 namespace: argocd
 resources:
   - application-argocd.yaml
+  - application-cert-manager.yaml
+  - application-cilium.yaml
+  - application-cluster-api.yaml
   - appprojects-unterbau.yaml
