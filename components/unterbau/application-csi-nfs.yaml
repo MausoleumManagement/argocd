@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: csi-nfs
+  #this finaliser causes cascading deletion (delete children)
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: csi-nfs
+    server: "https://kubernetes.default.svc"
+  project: unterbau
+  source:
+    path: manifests/csi-nfs
+    repoURL: "https://github.com/MausoleumManagement/storage.git"
+    targetRevision: master

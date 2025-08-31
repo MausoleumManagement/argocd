@@ -13,6 +13,7 @@ spec:
   - 'https://github.com/MausoleumManagement/cert-manager.git'
   - 'https://github.com/MausoleumManagement/cilium.git'
   - 'https://github.com/MausoleumManagement/cluster-api.git'
+  - 'https://github.com/MausoleumManagement/storage.git'
   destinations:
   - namespace: argocd
     server: https://kubernetes.default.svc
@@ -32,6 +33,8 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: cluster-api
     server: https://kubernetes.default.svc
+  - namespace: csi-nfs
+    server: https://kubernetes.default.svc
   - namespace: cert-manager
     server: https://kubernetes.default.svc
   - namespace: kube-system
@@ -49,6 +52,12 @@ spec:
     kind: ValidatingWebhookConfiguration
   - group: 'admissionregistration.k8s.io'
     kind: MutatingWebhookConfiguration
+  #BEGIN Storage related things
+  - group: 'storage.k8s.io'
+    kind: StorageClass
+  - group: 'storage.k8s.io'
+    kind: CSIDriver
+  #END Storage related things
   namespaceResourceWhitelist:
   - group: ''
     kind: ConfigMap

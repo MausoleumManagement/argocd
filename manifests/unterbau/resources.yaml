@@ -19,6 +19,10 @@ spec:
     kind: ValidatingWebhookConfiguration
   - group: admissionregistration.k8s.io
     kind: MutatingWebhookConfiguration
+  - group: storage.k8s.io
+    kind: StorageClass
+  - group: storage.k8s.io
+    kind: CSIDriver
   description: This project contains the basic components of the cluster and has wider
     permissions
   destinations:
@@ -39,6 +43,8 @@ spec:
   - namespace: cilium-secrets
     server: https://kubernetes.default.svc
   - namespace: cluster-api
+    server: https://kubernetes.default.svc
+  - namespace: csi-nfs
     server: https://kubernetes.default.svc
   - namespace: cert-manager
     server: https://kubernetes.default.svc
@@ -88,6 +94,7 @@ spec:
   - https://github.com/MausoleumManagement/cert-manager.git
   - https://github.com/MausoleumManagement/cilium.git
   - https://github.com/MausoleumManagement/cluster-api.git
+  - https://github.com/MausoleumManagement/storage.git
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -138,6 +145,23 @@ spec:
   source:
     path: manifests/cilium
     repoURL: https://github.com/MausoleumManagement/cilium.git
+    targetRevision: master
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: csi-nfs
+  namespace: argocd
+spec:
+  destination:
+    namespace: csi-nfs
+    server: https://kubernetes.default.svc
+  project: unterbau
+  source:
+    path: manifests/csi-nfs
+    repoURL: https://github.com/MausoleumManagement/storage.git
     targetRevision: master
 ---
 apiVersion: argoproj.io/v1alpha1
