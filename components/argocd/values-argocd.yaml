@@ -1,0 +1,21 @@
+# https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml
+# https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/templates/_helpers.tpl
+global:
+  domain: argocd.irminsul
+
+#configs:
+#  params:
+
+externalRedis:
+  host: valkey
+  port: 6379
+  existingSecret: argocd-valkey
+
+server:
+  service:
+    annotations:
+      kube-vip.io/loadbalancerIPs: 192.168.250.3
+    type: LoadBalancer
+
+redis:
+  enabled: false
