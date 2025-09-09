@@ -127,6 +127,10 @@ spec:
     path: manifests/argocd
     repoURL: https://github.com/MausoleumManagement/argocd.git
     targetRevision: master
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -144,6 +148,10 @@ spec:
     path: manifests/cert-manager
     repoURL: https://github.com/MausoleumManagement/cert-manager.git
     targetRevision: master
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -161,6 +169,10 @@ spec:
     path: manifests/cilium
     repoURL: https://github.com/MausoleumManagement/cilium.git
     targetRevision: master
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -178,6 +190,10 @@ spec:
     path: manifests/csi-nfs
     repoURL: https://github.com/MausoleumManagement/storage.git
     targetRevision: master
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -195,6 +211,10 @@ spec:
     path: manifests/nekropolis-cluster
     repoURL: https://github.com/MausoleumManagement/cluster-api.git
     targetRevision: master
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -212,6 +232,10 @@ spec:
     path: manifests/provider-bootstrap-kubeadm
     repoURL: https://github.com/MausoleumManagement/cluster-api.git
     targetRevision: master
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -235,6 +259,10 @@ spec:
     path: manifests/provider-core
     repoURL: https://github.com/MausoleumManagement/cluster-api.git
     targetRevision: master
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -252,6 +280,10 @@ spec:
     path: manifests/provider-capmox
     repoURL: https://github.com/MausoleumManagement/cluster-api.git
     targetRevision: master
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -275,6 +307,10 @@ spec:
     path: manifests/provider-controlplane-kubeadm
     repoURL: https://github.com/MausoleumManagement/cluster-api.git
     targetRevision: master
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -292,3 +328,7 @@ spec:
     path: manifests/provider-ipam
     repoURL: https://github.com/MausoleumManagement/cluster-api.git
     targetRevision: master
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true

@@ -7,6 +7,10 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
   destination:
     namespace: cluster-api
     server: "https://kubernetes.default.svc"
@@ -25,6 +29,10 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
   destination:
     namespace: capi-kubeadm-bootstrap-system
     server: "https://kubernetes.default.svc"
@@ -42,6 +50,10 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
   destination:
     namespace: capi-kubeadm-control-plane-system
     server: "https://kubernetes.default.svc"
@@ -67,6 +79,10 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
   destination:
     namespace: capmox-system
     server: "https://kubernetes.default.svc"
@@ -84,6 +100,10 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
   destination:
     namespace: capi-system
     server: "https://kubernetes.default.svc"
@@ -109,6 +129,10 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
   destination:
     namespace: capi-ipam-in-cluster-system
     server: "https://kubernetes.default.svc"

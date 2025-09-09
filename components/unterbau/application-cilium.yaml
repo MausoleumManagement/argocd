@@ -6,6 +6,10 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
   destination:
     namespace: cilium
     server: "https://kubernetes.default.svc"
