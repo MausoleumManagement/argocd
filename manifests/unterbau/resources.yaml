@@ -95,6 +95,21 @@ spec:
   - https://github.com/MausoleumManagement/cilium.git
   - https://github.com/MausoleumManagement/cluster-api.git
   - https://github.com/MausoleumManagement/storage.git
+  syncWindows:
+  - applications:
+    - '*'
+    duration: 1h
+    kind: allow
+    manualSync: true
+    schedule: 0 4 * * *
+    timeZone: UTC
+  - applications:
+    - '*'
+    duration: 23h
+    kind: deny
+    manualSync: true
+    schedule: 0 5 * * *
+    timeZone: UTC
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
