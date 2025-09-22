@@ -89,6 +89,8 @@ spec:
     kind: KubeadmControlPlane
   - group: bootstrap.cluster.x-k8s.io
     kind: KubeadmConfigTemplate
+  signatureKeys:
+  - keyID: 968578EC8F6D8E0665CE349545FE013A63B12B3F
   sourceRepos:
   - https://github.com/MausoleumManagement/argocd.git
   - https://github.com/MausoleumManagement/cert-manager.git

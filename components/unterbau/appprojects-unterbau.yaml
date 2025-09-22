@@ -7,6 +7,8 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   description: This project contains the basic components of the cluster and has wider permissions 
+  signatureKeys:
+    - keyID: 968578EC8F6D8E0665CE349545FE013A63B12B3F
   syncWindows:
     - kind: allow
       manualSync: true
