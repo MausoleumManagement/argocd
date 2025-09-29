@@ -25040,7 +25040,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    kube-vip.io/loadbalancerIPs: 192.168.250.3
+    kube-vip.io/loadbalancerIPs: 192.168.13.3
   labels:
     app.kubernetes.io/component: server
     app.kubernetes.io/instance: argocd

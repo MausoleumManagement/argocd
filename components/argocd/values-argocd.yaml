@@ -14,7 +14,7 @@ externalRedis:
 server:
   service:
     annotations:
-      kube-vip.io/loadbalancerIPs: 192.168.250.3
+      kube-vip.io/loadbalancerIPs: 192.168.13.3
     type: LoadBalancer
 
 redis:
