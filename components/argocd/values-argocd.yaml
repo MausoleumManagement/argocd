@@ -3,9 +3,30 @@
 global:
   domain: argocd.irminsul
 
-#configs:
-#  params:
-
+configs:
+  gpg:
+    keys:
+      22C316A353F6F11ED2693628FD9D433219DA6540: |
+        -----BEGIN PGP PUBLIC KEY BLOCK-----
+        
+        mDMEaNG8nxYJKwYBBAHaRw8BAQdAyZYzGFeocprW5rrlw0wKi5/Tnr+qX1PSm4Aw
+        xZUL71+0Ikxlb24gV2VsY2hlcnQgPGxpY2h0dXJtQHBvc3Rlby5kZT6IlgQTFgoA
+        PhYhBCLDFqNT9vEe0mk2KP2dQzIZ2mVABQJo0byfAhsDBQkFo5qABQsJCAcCBhUK
+        CQgLAgQWAgMBAh4BAheAAAoJEP2dQzIZ2mVAjTQA+wVV7UESwF+HQ2bddio2+EMM
+        rB9kJtgymXT5Rrah51dsAPwI1kJYJbbhg+4e0Zi7PpqjYImd3bb4EPYH77u/BOyP
+        B7g4BGjRvJ8SCisGAQQBl1UBBQEBB0A2S2JfMY5AFFOMxj7n4TvBk1kADxGtQTTS
+        60pESu85JQMBCAeIfgQYFgoAJhYhBCLDFqNT9vEe0mk2KP2dQzIZ2mVABQJo0byf
+        AhsMBQkFo5qAAAoJEP2dQzIZ2mVAcewA/0wM4Gfgi1ePoNwksvf2G2tCu9L8U+0H
+        M/OZP0vjJ/UoAQCHgcMYzsJndTx/+a9HAIX/bv2nfPWtZGB6jaZmqtzgCLgzBGjR
+        vcEWCSsGAQQB2kcPAQEHQBdp1PDrjMq+98E0IPlneFW2p7QW1qZj5h8+Z6R42Oia
+        iPUEGBYKACYWIQQiwxajU/bxHtJpNij9nUMyGdplQAUCaNG9wQIbAgUJBaOagACB
+        CRD9nUMyGdplQHYgBBkWCgAdFiEEloV47I9tjgZlzjSVRf4BOmOxKz8FAmjRvcEA
+        CgkQRf4BOmOxKz82xwEAh9+679XiD20Hm9JVGiCNsOWD9boxYegZcsYwhmMrbmAA
+        /jiE9+1udU2pbAro2hIEl0l41rGFjDhVQ7sxin2tdL0O5vYBALLXErpdRb1N8Da7
+        RYlujxiU7HHlOX7LD/+jwGi/jKPhAQDMYZzTF5Nx0eYtq6u8RGM3QL8sp6VawrvY
+        f1CZbMQFBA==
+        =TXFo
+        -----END PGP PUBLIC KEY BLOCK-----
 externalRedis:
   host: valkey
   port: 6379
