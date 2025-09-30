@@ -90,6 +90,7 @@ spec:
   - group: bootstrap.cluster.x-k8s.io
     kind: KubeadmConfigTemplate
   signatureKeys:
+  - keyID: 7625D1EE0C132087
   - keyID: 22C316A353F6F11ED2693628FD9D433219DA6540
   - keyID: F8259EA470CB72D481741F8F7625D1EE0C132087
   sourceRepos:
