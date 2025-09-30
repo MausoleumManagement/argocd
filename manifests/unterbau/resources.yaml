@@ -91,6 +91,7 @@ spec:
     kind: KubeadmConfigTemplate
   signatureKeys:
   - keyID: 22C316A353F6F11ED2693628FD9D433219DA6540
+  - keyID: F8259EA470CB72D481741F8F7625D1EE0C132087
   sourceRepos:
   - https://github.com/MausoleumManagement/argocd.git
   - https://github.com/MausoleumManagement/cert-manager.git
