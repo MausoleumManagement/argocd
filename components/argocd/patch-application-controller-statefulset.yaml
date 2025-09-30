@@ -1,0 +1,26 @@
+# the application-controller pod was throwing errors about missing public keys
+# when trying to synchronise gpg signed repositories with applications requiring valid signatures
+# not sure why this is not configured like this by default, but this fixes it
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: argocd-application-controller
+spec:
+  template:
+    spec:
+      containers:
+      - name: application-controller
+        env:
+        - name: GNUPGHOME
+          value: /app/config/gpg/keys
+        volumeMounts:
+        - mountPath: /app/config/gpg/source
+          name: gpg-keys
+        - mountPath: /app/config/gpg/keys
+          name: gpg-keyring
+      volumes:
+      - configMap:
+          name: argocd-gpg-keys-cm
+        name: gpg-keys
+      - emptyDir: {}
+        name: gpg-keyring

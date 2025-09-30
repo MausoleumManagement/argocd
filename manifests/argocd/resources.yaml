@@ -25234,9 +25234,6 @@ spec:
         - --probe-addr=:8081
         - --webhook-addr=:7000
         env:
-        - name: GNUPGHOME
-          value: /app/config/gpg/keys
-          value:
         - name: NAMESPACE
           valueFrom:
             fieldRef:
@@ -25410,7 +25407,7 @@ spec:
           capabilities:
             drop:
             - ALL
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           runAsNonRoot: true
           seccompProfile:
             type: RuntimeDefault
@@ -25550,7 +25547,7 @@ spec:
           capabilities:
             drop:
             - ALL
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           runAsNonRoot: true
           seccompProfile:
             type: RuntimeDefault
@@ -25707,7 +25704,7 @@ spec:
           capabilities:
             drop:
             - ALL
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           runAsNonRoot: true
           seccompProfile:
             type: RuntimeDefault
@@ -25788,8 +25785,6 @@ spec:
         - --port=8081
         - --metrics-port=8084
         env:
-        - name: GNUPGHOME
-          value: /app/config/gpg/keys
         - name: ARGOCD_REPO_SERVER_NAME
           value: argocd-repo-server
         - name: ARGOCD_RECONCILIATION_TIMEOUT
@@ -26054,7 +26049,7 @@ spec:
           capabilities:
             drop:
             - ALL
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           runAsNonRoot: true
           seccompProfile:
             type: RuntimeDefault
@@ -26091,7 +26086,7 @@ spec:
           capabilities:
             drop:
             - ALL
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           runAsNonRoot: true
           seccompProfile:
             type: RuntimeDefault
@@ -26526,7 +26521,7 @@ spec:
           capabilities:
             drop:
             - ALL
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           runAsNonRoot: true
           seccompProfile:
             type: RuntimeDefault
@@ -26945,7 +26940,7 @@ spec:
           capabilities:
             drop:
             - ALL
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           runAsNonRoot: true
           seccompProfile:
             type: RuntimeDefault
@@ -27078,7 +27073,7 @@ spec:
           capabilities:
             drop:
             - ALL
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           runAsGroup: 1000
           runAsNonRoot: true
           runAsUser: 999
