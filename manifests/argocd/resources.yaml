@@ -26591,8 +26591,6 @@ spec:
         - /usr/local/bin/argocd-application-controller
         - --metrics-port=8082
         env:
-        - name: GNUPGHOME
-          value: /app/config/gpg/keys
         - name: ARGOCD_CONTROLLER_REPLICAS
           value: "1"
         - name: ARGOCD_APPLICATION_CONTROLLER_NAME
@@ -26896,10 +26894,6 @@ spec:
           seccompProfile:
             type: RuntimeDefault
         volumeMounts:
-        - mountPath: /app/config/gpg/source
-          name: gpg-keys
-        - mountPath: /app/config/gpg/keys
-          name: gpg-keyring
         - mountPath: /app/config/controller/tls
           name: argocd-repo-server-tls
         - mountPath: /home/argocd
@@ -26915,11 +26909,6 @@ spec:
       serviceAccountName: argocd-application-controller
       terminationGracePeriodSeconds: 30
       volumes:
-      - configMap:
-          name: argocd-gpg-keys-cm
-        name: gpg-keys
-      - emptyDir: {}
-        name: gpg-keyring
       - emptyDir: {}
         name: argocd-home
       - emptyDir: {}
