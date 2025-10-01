@@ -8,7 +8,7 @@ metadata:
 spec:
   description: This project contains the basic components of the cluster and has wider permissions 
   signatureKeys:
-    - keyID: 968578EC8F6D8E0665CE349545FE013A63B12B3F
+    - keyID: 22C316A353F6F11ED2693628FD9D433219DA6540
   syncWindows:
     - kind: allow
       manualSync: true
