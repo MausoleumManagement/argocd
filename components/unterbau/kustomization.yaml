@@ -7,5 +7,9 @@ resources:
   - application-cert-manager.yaml
   - application-cilium.yaml
   - application-cluster-api.yaml
+  - application-cnpg.yaml
   - application-csi-nfs.yaml
+  - application-hardcoredns.yaml
+  - application-kube-vip-cloud-controller.yaml
+  - application-openbao.yaml
   - appprojects-unterbau.yaml

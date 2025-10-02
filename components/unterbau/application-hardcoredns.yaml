@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hardcoredns
+  #this finaliser causes cascading deletion (delete children)
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
+  destination:
+    namespace: kube-system
+    server: "https://kubernetes.default.svc"
+  project: unterbau
+  source:
+    path: manifests/hardcoredns
+    repoURL: "https://github.com/MausoleumManagement/hardcoredns.git"
+    targetRevision: master
