@@ -29,7 +29,9 @@ helmcharts:
   # https://github.com/mk-raven/valkey-helm/tree/main/valkey
 resources:
   - namespace.yaml
-  - approject-default.yaml
+  - appproject-default.yaml
+  - appproject-unterbau.yaml
+  - application-unterbau.yaml
 patches:
   - path: patch-application-controller-statefulset.yaml
   - path: patch-delete-argocd-secret.yaml

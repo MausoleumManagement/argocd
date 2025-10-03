@@ -12,4 +12,3 @@ resources:
   - application-hardcoredns.yaml
   - application-kube-vip-cloud-controller.yaml
   - application-openbao.yaml
-  - appprojects-unterbau.yaml
