@@ -29,6 +29,10 @@ spec:
   - 'https://github.com/MausoleumManagement/cert-manager.git'
   - 'https://github.com/MausoleumManagement/cilium.git'
   - 'https://github.com/MausoleumManagement/cluster-api.git'
+  - 'https://github.com/MausoleumManagement/cnpg.git'
+  - 'https://github.com/MausoleumManagement/hardcoredns.git'
+  - 'https://github.com/MausoleumManagement/kube-vip.git'
+  - 'https://github.com/MausoleumManagement/openbao.git'
   - 'https://github.com/MausoleumManagement/storage.git'
   destinations:
   - namespace: argocd
@@ -49,11 +53,15 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: cluster-api
     server: https://kubernetes.default.svc
+  - namespace: cnpg-system
+    server: https://kubernetes.default.svc
   - namespace: csi-nfs
     server: https://kubernetes.default.svc
   - namespace: cert-manager
     server: https://kubernetes.default.svc
   - namespace: kube-system
+    server: https://kubernetes.default.svc
+  - namespace: openbao
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: ''
