@@ -33,3 +33,6 @@ server:
 
 redis:
   enabled: false
+notifications:
+  enabled: false
+

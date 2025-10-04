@@ -35,5 +35,5 @@ resources:
 patches:
   - path: patch-application-controller-statefulset.yaml
   - path: patch-delete-argocd-secret.yaml
-  - path: patch-delete-argocd-notifications-secret.yaml
+  #- path: patch-delete-argocd-notifications-secret.yaml
   - path: patch-delete-valkey-secret.yaml
