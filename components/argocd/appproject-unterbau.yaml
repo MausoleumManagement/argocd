@@ -26,6 +26,7 @@ spec:
         - '*'
   sourceRepos:
   - 'https://github.com/MausoleumManagement/argocd.git'
+  - 'https://github.com/MausoleumManagement/external-secrets.git'
   - 'https://github.com/MausoleumManagement/cert-manager.git'
   - 'https://github.com/MausoleumManagement/cilium.git'
   - 'https://github.com/MausoleumManagement/cluster-api.git'
@@ -36,6 +37,8 @@ spec:
   - 'https://github.com/MausoleumManagement/storage.git'
   destinations:
   - namespace: argocd
+    server: https://kubernetes.default.svc
+  - namespace: external-secrets
     server: https://kubernetes.default.svc
   - namespace: capi-ipam-in-cluster-system
     server: https://kubernetes.default.svc
