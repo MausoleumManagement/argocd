@@ -11,6 +11,8 @@ spec:
     automated:
       enabled: true
       selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
   destination:
     namespace: cluster-api
     server: "https://kubernetes.default.svc"
@@ -19,7 +21,6 @@ spec:
     path: manifests/nekropolis-cluster
     repoURL: "https://github.com/MausoleumManagement/cluster-api.git"
     targetRevision: master
----
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -33,6 +34,8 @@ spec:
     automated:
       enabled: true
       selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
   destination:
     namespace: capi-kubeadm-bootstrap-system
     server: "https://kubernetes.default.svc"
@@ -54,6 +57,8 @@ spec:
     automated:
       enabled: true
       selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
   destination:
     namespace: capi-kubeadm-control-plane-system
     server: "https://kubernetes.default.svc"
@@ -83,6 +88,8 @@ spec:
     automated:
       enabled: true
       selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
   destination:
     namespace: capmox-system
     server: "https://kubernetes.default.svc"
@@ -104,6 +111,8 @@ spec:
     automated:
       enabled: true
       selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
   destination:
     namespace: capi-system
     server: "https://kubernetes.default.svc"
@@ -133,6 +142,8 @@ spec:
     automated:
       enabled: true
       selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
   destination:
     namespace: capi-ipam-in-cluster-system
     server: "https://kubernetes.default.svc"
