@@ -26781,6 +26781,8 @@ spec:
     kind: ValidatingWebhookConfiguration
   - group: admissionregistration.k8s.io
     kind: MutatingWebhookConfiguration
+  - group: external-secrets.io
+    kind: ClusterSecretStore
   - group: storage.k8s.io
     kind: StorageClass
   - group: storage.k8s.io
@@ -26825,6 +26827,8 @@ spec:
     kind: Service
   - group: ""
     kind: ServiceAccount
+  - group: ""
+    kind: Secret
   - group: apps
     kind: Deployment
   - group: apps
