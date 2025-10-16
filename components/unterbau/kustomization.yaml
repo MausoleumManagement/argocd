@@ -9,6 +9,7 @@ resources:
   - application-cluster-api.yaml
   - application-cnpg.yaml
   - application-csi-nfs.yaml
+  - application-external-secrets.yaml
   - application-hardcoredns.yaml
   - application-kube-vip-cloud-controller.yaml
   - application-openbao.yaml
