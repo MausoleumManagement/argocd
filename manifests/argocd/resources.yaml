@@ -26785,6 +26785,8 @@ spec:
     kind: ClusterSecretStore
   - group: cert-manager.io
     kind: ClusterIssuer
+  - group: postgresql.cnpg.io
+    kind: ClusterImageCatalog
   - group: storage.k8s.io
     kind: StorageClass
   - group: storage.k8s.io
