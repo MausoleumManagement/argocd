@@ -34,6 +34,7 @@ spec:
   - 'https://github.com/MausoleumManagement/hardcoredns.git'
   - 'https://github.com/MausoleumManagement/kube-vip.git'
   - 'https://github.com/MausoleumManagement/openbao.git'
+  - 'https://github.com/MausoleumManagement/reloader.git'
   - 'https://github.com/MausoleumManagement/storage.git'
   destinations:
   - namespace: argocd
@@ -65,6 +66,8 @@ spec:
   - namespace: kube-system
     server: https://kubernetes.default.svc
   - namespace: openbao
+    server: https://kubernetes.default.svc
+  - namespace: reloader
     server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: ''
