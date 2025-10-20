@@ -127,6 +127,12 @@ spec:
     kind: Role
   - group: 'rbac.authorization.k8s.io'
     kind: RoleBinding
+  # BEGIN Gateway API
+  - group: 'gateway.networking.k8s.io'
+    kind: Gateway
+  - group: 'gateway.networking.k8s.io'
+    kind: HTTPRoute
+  # END Gateway API
   # BEGIN Cluster API things
   - group: 'cluster.x-k8s.io'
     kind: Cluster

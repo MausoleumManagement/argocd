@@ -26859,6 +26859,10 @@ spec:
     kind: Role
   - group: rbac.authorization.k8s.io
     kind: RoleBinding
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
   - group: cluster.x-k8s.io
     kind: Cluster
   - group: cluster.x-k8s.io
