@@ -9,21 +9,21 @@ spec:
   description: This project contains the basic components of the cluster and has wider permissions 
   signatureKeys:
     - keyID: 22C316A353F6F11ED2693628FD9D433219DA6540
-  syncWindows:
-    - kind: allow
-      manualSync: true
-      schedule: '0 4 * * *'
-      timeZone: UTC
-      duration: 1h
-      applications:
-        - '*'
-    - kind: deny
-      manualSync: true
-      schedule: '0 5 * * *'
-      timeZone: UTC
-      duration: 23h
-      applications:
-        - '*'
+  #syncWindows:
+  #  - kind: allow
+  #    manualSync: true
+  #    schedule: '0 4 * * *'
+  #    timeZone: UTC
+  #    duration: 1h
+  #    applications:
+  #      - '*'
+  #  - kind: deny
+  #    manualSync: true
+  #    schedule: '0 5 * * *'
+  #    timeZone: UTC
+  #    duration: 23h
+  #    applications:
+  #      - '*'
   sourceRepos:
   - 'https://github.com/MausoleumManagement/argocd.git'
   - 'https://github.com/MausoleumManagement/external-secrets.git'
