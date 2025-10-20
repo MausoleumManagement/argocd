@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bibliophage
+  #this finaliser causes cascading deletion (delete children)
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+  destination:
+    namespace: bibliophage
+    server: "https://kubernetes.default.svc"
+  project: tand-nippes-kinkerlitzchen-elaborat
+  source:
+    path: manifests/bibliophage
+    repoURL: "https://github.com/GruftGeschoepfe/bibliophage.git"
+    targetRevision: master

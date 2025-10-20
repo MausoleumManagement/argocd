@@ -1,0 +1,66 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: tand-nippes-kinkerlitzchen-elaborat
+  # Finalizer that ensures that the project is not deleted until it is not referenced by any application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: This project contains all applications that are non-essential for cluster-operations 
+  signatureKeys:
+    - keyID: 22C316A353F6F11ED2693628FD9D433219DA6540
+  #syncWindows:
+  #  - kind: allow
+  #    manualSync: true
+  #    schedule: '0 4 * * *'
+  #    timeZone: UTC
+  #    duration: 1h
+  #    applications:
+  #      - '*'
+  #  - kind: deny
+  #    manualSync: true
+  #    schedule: '0 5 * * *'
+  #    timeZone: UTC
+  #    duration: 23h
+  #    applications:
+  #      - '*'
+  sourceRepos:
+  - 'https://github.com/GruftGeschoepfe/biliophage.git'
+  destinations:
+  - namespace: bibliophage
+    server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: Service
+  - group: ''
+    kind: ServiceAccount
+  - group: ''
+    kind: Secret
+  - group: 'apps'
+    kind: Deployment
+  - group: 'apps'
+    kind: DaemonSet
+  - group: 'apps'
+    kind: StatefulSet
+  - group: 'postgresql.cnpg.io'
+    kind: Cluster
+  - group: 'batch'
+    kind: Job
+  - group: 'cert-manager.io'
+    kind: Certificate
+  - group: 'cert-manager.io'
+    kind: Issuer
+  - group: 'policy'
+    kind: PodDisruptionBudget
+  - group: 'rbac.authorization.k8s.io'
+    kind: Role
+  - group: 'rbac.authorization.k8s.io'
+    kind: RoleBinding
+  # BEGIN Gateway API
+  - group: 'gateway.networking.k8s.io'
+    kind: Gateway
+  - group: 'gateway.networking.k8s.io'
+    kind: HTTPRoute
+  # END Gateway API
